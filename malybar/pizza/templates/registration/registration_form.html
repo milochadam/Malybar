@@ -1,0 +1,12 @@
+{% extends "pizza/base.html" %}
+{% block tytul_h1 %}
+Rejestracja
+{% endblock %}
+
+{% block tresc %}
+<form action="." method="post" accept-charset="utf-8">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Utwórz konto">
+</form>
+{% endblock %}

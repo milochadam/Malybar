@@ -1,0 +1,26 @@
+{% extends "pizza/base.html" %}
+{% block tytul_h1 %}
+Dodaj pizzę
+{% endblock %}
+{% block tresc %}
+
+<form id="pform" action="." method="post">
+  {% csrf_token %}
+  {{ form.as_p  }}
+
+  <h3>Składniki:</h3>
+  {{ skladniki.management_form }}
+  {{ skladniki.non_form_errors }}
+  {% for skl in skladniki %}
+  <div class="{{ skladniki.prefix }}">
+    <span class="ordinal">{{ forloop.counter }}. </span>
+    {{ skl.nazwa.errors  }}
+    {{ skl.jarski.errors  }}
+    {{ skl.nazwa.label_tag }} {{ skl.nazwa }}
+    {{ skl.jarski.label_tag }} {{ skl.jarski }}
+    <br></br>
+  </div>
+  {% endfor %}
+  <br/><input type="submit" value="Zapisz">
+</form>
+{% endblock %}

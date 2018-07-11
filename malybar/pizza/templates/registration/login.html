@@ -1,0 +1,15 @@
+{% extends "pizza/base.html" %}
+
+{% block tytul_h1 %}
+    Logowanie
+{% endblock %}
+
+{% block tresc %}
+<form action="." method="post" accept-charset="utf-8">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input class="loginbtn" type="submit" value="Zaloguj się">
+    <button class="registerbtn" onclick="location.href='{% url "registration_register" %}';">Utwórz konto</button>
+</form>
+<hr>
+{% endblock %}
